@@ -127,4 +127,58 @@ season.cov = function(x, year){
 resid_temp = season.cov(training_temp, year)
 resid_sun  = season.cov(training_sun, year)
 
+resid_data_yearly = matrix(DT_RLoad,nrow=96)
+x = seq(1/nrow(resid_data_yearly),1,length.out=nrow(resid_data_yearly)) # generate x
+
+fit    = array(0,dim=c(ncol(resid_data_yearly),96,7))
+lambda = array(0,dim=ncol(resid_data_yearly))
+for(i in 1:ncol(resid_data_yearly)){
+  try(y<-expectreg.ls(resid_data_yearly[,i]~rb(x,"pspline"),estimate="sheet",expectiles=c(0.01,0.05,0.25,0.5,0.75,0.95,0.99),smooth="gcv")) # ci=TRUE
+  fit[i,,]<-y$fitted
+  lambda[i]=y$lambda
+}
+
+fpca = function(num, fit, x){
+  dataResid   = Data2fd(x,t(fit[,,num]))
+  PCA_Resid   = pca.fd(dataResid,nharm=4,centerfns=TRUE)
+  return(PCA_Resid)
+}
+
+result  = sapply(X = c(1: 7), FUN = fpca, fit = fit, x = x)
+varprop = result[4,]
+scores  = result[3,]
+
+plot.PC = function(ind, num, result){
+  plot(result[1,][[num]][ind], ylab = paste("PC" ,ind), xlab = "Time of day", cex.lab = 2, cex.axis = 2,lwd = 3, ylim = c(-2,2), xaxt = 'n')
+  abline(h = 0, lty = 2)
+  axis(1,c(0,0.25,0.5,0.75,1), c("00:00","06:00","12:00","18:00","24:00"), cex.axis = 1.5)
+}
+
+plot.score = function(ind, num, result){
+  plot(result[3,][[num]][,ind], ylab = paste(expression(alpha) ,ind), xlab = "Time", cex.lab = 2, cex.axis = 2,lwd = 3, type= "l")
+}
+
+### Plot 4: PC
+par(mar=c(5.2, 6.1, 2, 0.5)) 
+par(mfrow = c(2,2))
+sapply(1:4, plot.PC, num = 4, result = result)
+
+## Plot 4: Scores
+par(mar=c(5.2, 6.1, 2, 0.5)) 
+par(mfrow = c(4,1))
+sapply(1:4, plot.score, num = 4, result = result)
+
+
+exo           = cbind( resid_temp,resid_sun)
+colnames(exo) = c("TEMP","Sun")
+
+var.model = function(num, scores, exo){
+  endo = scores[num][[1]]
+  colnames(endo)<-c("s1","s2","s3","s4")
+  model = VAR(endo, exogen = exo, lag.max = 30, type = "const", ic = "AIC")
+  return(model)
+}
+
+model = sapply(c(1:7), FUN = var.model, scores = scores, exo = exo)
+summary(model[1,])
 
