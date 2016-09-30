@@ -1,10 +1,10 @@
 ﻿Name of QuantLet:  FPCA_Electricity_Application
 
-Published in:      Forecasting generalized quantiles of electricity demand: A functional data approach
+Published in:      'Forecasting generalized quantiles of electricity demand: A functional data approach'
 
 Description:       'Computes generalized quantiles of electicity demand and models their dynamics over time using FPCA and multivariate time-series techniques'
 
-Keywords:          quantile, expectile, principle-component-analysis, loss function, time-series
+Keywords:          quantile, expectile, FPCA, loss function, time-series
 
 See also:          FPCA_Electricity_Simulation
 

@@ -1,10 +1,10 @@
 ﻿Name of QuantLet:  FPCA_Electricity_Simulation
 
-Published in:      Forecasting generalized quantiles of electricity demand: A functional data approach
+Published in:      'Forecasting generalized quantiles of electricity demand: A functional data approach'
 
-Description:       Conducts a simulation study of the proposed methodology and computes the MSE 
+Description:       'Conducts a simulation study of the proposed methodology and computes the MSE' 
 
-Keywords:          quantile, expectile, principle-component-analysis, simulation, loss function
+Keywords:          quantile, expectile, FPCA, simulation, loss function
 
 See also:          LQRcheck
 
