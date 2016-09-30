@@ -3,7 +3,7 @@
 R Code used in the article
 "Forecasting Generalized Quantiles of Electricity Demand: A Functional Data Approach",
 López Cabrera, B. and Schulz, F. (2016),
-Journal of the American Statistical Association, http://dx.doi.org/10.1080/01621459.2016.1219259. 
+Journal of the American Statistical Association, DOI:10.1080/01621459.2016.1219259. 
 (http://amstat.tandfonline.com/doi/abs/10.1080/01621459.2016.1219259)
 
 # Quantlets
