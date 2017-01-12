@@ -16,4 +16,4 @@ Datafile:          LoadTSO.txt
 
 Input:             FPCA_Electricity_Data.R, FPCA_Electricity_Functions
  
-Example:           'Principal component functions and principal component scores for the TSO Amprion'
+Example:           'Principal component functions and principal component scores. Forecast of expectile curves.'
