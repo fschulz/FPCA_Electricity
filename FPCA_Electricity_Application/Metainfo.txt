@@ -16,4 +16,4 @@ Datafile:          LoadTSO.txt
 
 Input:             FPCA_Electricity_Data.R, FPCA_Electricity_Functions
  
-Example:           MSE and standard deviation of the simulation results
+Example:           'Principal component functions and principal component scores for the TSO Amprion'
