@@ -1,6 +1,6 @@
 ## Loads and processes Data of the TSO Amprion
 
-Load          = read.delim("Data/LoadTSO.txt", sep=";")
+Load          = read.delim("Data/LoadTSO.txt", sep=";") # change to LoadBU.txt for data of BU
 Load_mat      = reshape(Load[,-3],timevar="Uhrzeit", idvar="Datum", direction="wide")
 Load_mat[,1]  = as.Date(Load_mat[,1])
 Load_mat      = Load_mat[order(Load_mat[, 1]),-98 ]

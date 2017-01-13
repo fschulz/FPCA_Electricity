@@ -12,7 +12,7 @@ Author:            Franziska Schulz, Brenda López Cabrera
 
 Submitted:         30.09.2016
 
-Datafile:          LoadTSO.txt
+Datafile:          LoadTSO.txt, LoadBU.txt
 
 Input:             FPCA_Electricity_Data.R, FPCA_Electricity_Functions
  
